@@ -24,13 +24,17 @@ powerCons$Date<-as.Date(powerCons$Date,format="%d/%m/%Y")
 powerCons$timetemp <- paste(powerCons$Date, powerCons$Time) 
 powerCons$Time <- strptime(powerCons$timetemp, format = "%Y-%m-%d %H:%M:%S")  
 powerCons$NewTime <- as.POSIXct(powerCons$Time)
+head(powerCons$Date)
+head(powerCons$timetemp)
+head(powerCons$NewTime)
+class(powerCons$NewTime)
 
 #Create the plot 
 png(file = "plot2.png")  
 with(powerCons, plot(
-  Time,Global_active_power, 
+  Time,Sub_metering_1, 
   type = "l",
-  ylab = "Global Active Power (kilowatts)")
+  ylab = "Energy sub metering")
 )
 dev.off()  
 
